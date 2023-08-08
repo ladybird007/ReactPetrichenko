@@ -1,7 +1,7 @@
 {
   "name": "reactpetrichenko",
   "version": "1.0.0",
-  "description": "React first project",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,10 +15,5 @@
   "bugs": {
     "url": "https://github.com/ladybird007/ReactPetrichenko/issues"
   },
-  "homepage": "https://github.com/ladybird007/ReactPetrichenko#readme",
-  "devDependencies": {
-    "eslint": "^8.46.0",
-    "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-react": "^7.33.1"
-  }
+  "homepage": "https://github.com/ladybird007/ReactPetrichenko#readme"
 }
