@@ -4,7 +4,6 @@ import React from "react";
 import styled from "styled-components";
 
 const AppHeader = styled.div`
-    padding-top: 15px;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -20,7 +19,7 @@ const AppHeader = styled.div`
 
 const Header = () => {
     return (
-        <AppHeader as='header' colored>
+        <AppHeader as='header'>
             <h1>Anastasiia</h1>
             <h2>5 posts, liked 0</h2>
         </AppHeader>
