@@ -56,6 +56,7 @@ export default class App extends Component {
         const newItem = {
             label: body,
             important: false,
+            like: false,
             id: this.maxId++
         }
         this.setState(({data}) => {
@@ -86,9 +87,15 @@ export default class App extends Component {
     }
 
     render() {
+        const {data} = this.state,
+              likedPosts = data.filter(item => item.like).length,
+              allPosts = data.length;
         return (
             <StyledAppBlock>
-                <Header/>
+                <Header
+                    likedPosts={likedPosts}
+                    allPosts={allPosts}
+                />
                 <div className="search-panel d-flex">
                     <SearchPanel/>
                     <PostStatusFilter/>
