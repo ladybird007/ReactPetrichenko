@@ -24,12 +24,17 @@ export default class App extends Component {
         super(props);
         this.state = {
             data: [
-                {label: 'Going to learn React', important: true, id: 'dddd'},
-                {label: 'Going to learn HTML', important: false, id: 'qqqq'},
-                {label: 'Going to learn JS', important: false, id: 'pppp'}
+                {label: 'Going to learn React', important: true, id: '1'},
+                {label: 'Going to learn HTML', important: false, id: '2'},
+                {label: 'Going to learn JS', important: false, id: '3'}
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
+        this.addItem = this.addItem.bind(this);
+        this.onToggleImportant = this.onToggleImportant.bind(this);
+        this.onToggleLiked = this.onToggleLiked.bind(this);
+
+        this.MaxId = 4;
     } 
 
     deleteItem(id) {
@@ -47,6 +52,28 @@ export default class App extends Component {
         });
     }
 
+    addItem(body) {
+        const newItem = {
+            label: body,
+            important: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        });
+    }
+
+    onToggleImportant(id) {
+        console.log('Important ', id);
+    }
+
+    onToggleLiked(id) {
+        console.log('Liked ', id);
+    }
+
     render() {
         return (
             <StyledAppBlock>
@@ -57,8 +84,11 @@ export default class App extends Component {
                 </div>
                 <PostList 
                     posts={this.state.data}
-                    onDelete={this.deleteItem}/>
-                <PostAddForm/>
+                    onDelete={this.deleteItem}
+                    onToggleImportant={this.onToggleImportnt}
+                    onToggleLiked={this.onToggleLiked}/>
+                <PostAddForm
+                    onAdd={this.addItem}/>
             </StyledAppBlock>
         )
     }
