@@ -1,12 +1,13 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 
 import "./post-status-filter.css";
 
 const PostStatusFilter = () => {
     return (
         <div className="btn-group">
-            <button type="button" className="btn btn-info">All</button>
-            <button type="button" className="btn btn-outline btn-secondary">Liked</button>
+            <Button variant="outline-info">All</Button>
+            <Button variant="outline-secondary">Liked</Button>  
         </div>
     )
 }

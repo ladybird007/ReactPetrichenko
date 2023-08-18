@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import "./post-list-item.css";
+import "./post-list-item.scss";
 
 export default class PostListItem extends Component {
     constructor(props) {
@@ -12,8 +12,6 @@ export default class PostListItem extends Component {
         this.onImportant = this.onImportant.bind(this); 
         this.onLike = this.onLike.bind(this); 
     }
-
-
 
     onImportant() {
         this.setState(({important}) => ({
