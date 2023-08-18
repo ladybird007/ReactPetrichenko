@@ -24,9 +24,9 @@ export default class App extends Component {
         super(props);
         this.state = {
             data: [
-                {label: 'Going to learn React', important: true, id: '1'},
-                {label: 'Going to learn HTML', important: false, id: '2'},
-                {label: 'Going to learn JS', important: false, id: '3'}
+                {label: 'Going to learn React', important: true, like: false, id: '1'},
+                {label: 'Going to learn HTML', important: false, like: false, id: '2'},
+                {label: 'Going to learn JS', important: false, like: false, id: '3'}
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
@@ -71,7 +71,18 @@ export default class App extends Component {
     }
 
     onToggleLiked(id) {
-        console.log('Liked ', id);
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id);
+             
+            const oldItem = data[index];
+            const newItem = {...oldItem, like: !oldItem.like};
+
+            const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
+
+            return {
+                data: newArr
+            }
+        });
     }
 
     render() {
@@ -85,7 +96,7 @@ export default class App extends Component {
                 <PostList 
                     posts={this.state.data}
                     onDelete={this.deleteItem}
-                    onToggleImportant={this.onToggleImportnt}
+                    onToggleImportant={this.onToggleImportant}
                     onToggleLiked={this.onToggleLiked}/>
                 <PostAddForm
                     onAdd={this.addItem}/>
