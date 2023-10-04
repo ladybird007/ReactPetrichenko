@@ -36,6 +36,7 @@ export default class App extends Component {
         this.onToggleImportant = this.onToggleImportant.bind(this);
         this.onToggleLiked = this.onToggleLiked.bind(this);
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
+        this.onFilterSelect = this.onFilterSelect.bind(this);
 
         this.MaxId = 4;
     } 
@@ -46,10 +47,6 @@ export default class App extends Component {
 
             const before = data.slice(0, index);
             const after = data.slice(index + 1);
-
-            console.log(index);
-            console.log(before);
-            console.log(after);
 
             const newArr = [...before, ...after];
             // const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
@@ -108,24 +105,28 @@ export default class App extends Component {
 
     searchPost(items, term) {
         if (term.length === 0) {
-            return items;
+            return items
         } 
 
         return items.filter( (item) => {
             return item.label.indexOf(term) > -1;
-        })
+        });
     }
 
     filterPost(items, filter) {
         if (filter === 'like') {
             return items.filter(item => item.like);
         } else {
-            return items;
+            return items
         }
     }
 
     onUpdateSearch(term) {
         this.setState({term});
+    }
+
+    onFilterSelect(filter) {
+        this.setState({filter});
     }
 
     render() {
@@ -147,6 +148,7 @@ export default class App extends Component {
                     />
                     <PostStatusFilter
                         filter={filter}
+                        onFilterSelect={this.onFilterSelect}
                     />
                 </div>
                 <PostList 
